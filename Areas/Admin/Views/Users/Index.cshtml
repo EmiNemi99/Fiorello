@@ -1,0 +1,91 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+
+
+
+
+@model List<UserVM>
+<div class="card">
+    <div class="d-flex justify-content-between allign align-items-center  ">
+
+        <h5 class="card-header">Users</h5>
+        <a asp-action="Create" style="width:100px; margin-right: 26px" ; class="btn btn-primary text-white class=btn rounded-pill btn-primary ">Create</a>
+
+    </div>
+    <div class="table-responsive text-nowrap">
+        <table class="table">
+            <thead>
+                <tr>
+                    
+                    <th>Name</th>
+                    <th>Surname</th>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>Status</th>
+
+                    <th style="text-align:right">Actions</th>
+                </tr>
+            </thead>
+            <tbody class="table-border-bottom-0">
+
+                @foreach (UserVM item in Model)
+                {
+                    <tr>
+                       
+
+                        <td>@item.Name</td>
+                        <td>@item.Surname</td>
+                        <td>@item.Username</td>
+                        <td>@item.Email </td>   
+                        <td>@item.Role </td>   
+                        <td>
+
+                            @if (item.IsDeactive)
+                            {
+                                <span class="text-danger">Passive </span>
+                            }
+                            else
+                            {
+                                <span class="text-success">Active </span>
+                            }
+
+                        </td>
+                        <td>
+                            <div class="d-flex justify-content-end">
+                                <a asp-action="ResetPassword" asp-route-id="@item.Id" style="width:140px; margin-right:8px" class="btn btn-warning text-white class=btn rounded-pill btn-warning ">Reset Password</a>
+                                <a asp-action="Update" asp-route-id="@item.Id" style="width:100px; margin-right:8px" class="btn btn-success  text-white class=btn rounded-pill btn-success">Update</a>
+                                @if (User.Identity.Name != item.Name)
+                                {
+                                    @if (item.IsDeactive)
+                                    {
+                                        <a asp-action="Activity" asp-route-id="@item.Id" style="width:100px; margin-right:8px" class="btn btn-outline-info  text-white class=btn rounded-pill btn-info">Activate</a>
+                                    }
+                                    else
+                                    {
+                                        <a asp-action="Activity" asp-route-id="@item.Id" style="width:100px; margin-right:8px" class="btn btn-danger  text-white class=btn rounded-pill btn-danger">DeActivate</a>
+                                    }
+                                }
+
+                            </div>
+
+
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+
+
+
+

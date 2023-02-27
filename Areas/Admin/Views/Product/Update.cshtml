@@ -1,0 +1,65 @@
+﻿
+@model Product
+<div class="col-xl">
+    <div class="card mb-4">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <h5 class="mb-0">Slider Create</h5>
+
+        </div>
+        <div class="card-body">
+
+            <form method="post" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label asp-for="Photo" class="form-label" for="basic-default-fullname"> </label>
+                    <input asp-for="Photo" accept="image/*" class="form-control">
+                    <span asp-validation-for="Photo" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Name" class="form-label"> </label>
+                    <textarea asp-for="Name" class="form-control">  </textarea>
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Price" class="form-label"> </label>
+                    <textarea asp-for="Price" class="form-control">  </textarea>
+                    <span asp-validation-for="Price" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1">Select Category</label>
+                    <select class="form-control" name="catId">
+
+                        @foreach (Category cat in ViewBag.Categories)
+                        {
+                            if (Model.CategoryId == cat.Id)
+                            {
+                                <option selected value="@cat.Id">@cat.Name</option>
+                            }
+                            else
+                            {
+                                <option  value="@cat.Id">@cat.Name</option>
+
+                            }
+
+
+                        }
+
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <a asp-action="Index" class="btn btn-success"> Go Back</a>
+
+            </form>
+
+
+
+
+
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}
+
+
+

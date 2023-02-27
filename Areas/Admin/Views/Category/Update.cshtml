@@ -1,0 +1,39 @@
+﻿@model Category
+<div class="col-xl">
+    <div class="card mb-4">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <h5 class="mb-0">@Model.Name Update</h5>
+            <small class="text-muted float-end">Default label</small>
+        </div>
+        <div class="card-body">
+
+            <form method="post">
+                <div class="mb-3">
+                    <label asp-for="Name" class="form-label" for="basic-default-fullname"> </label>
+                    <input asp-for="Name" class="form-control">
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Products" class="form-label"> </label>
+                    <textarea asp-for="Products" class="form-control">  </textarea>
+                    <span asp-validation-for="Products" class="text-danger"></span>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <a asp-action="Index" class="btn btn-success"> Go Back</a>
+
+            </form>
+
+
+
+
+
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}
+
+
+

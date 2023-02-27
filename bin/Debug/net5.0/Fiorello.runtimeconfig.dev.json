@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "C:\\Users\\Furqan Service\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\Furqan Service\\.nuget\\packages"
+    ]
+  }
+}

@@ -1,0 +1,83 @@
+﻿
+@{
+    ViewData["Title"] = "Detail";
+}
+@model CreateUserVM
+<div class="col-xl">
+    <div class="card mb-4">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <h5 class="mb-0">User Create</h5>
+        </div>
+        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+        <div class="card-body">
+
+            <form method="post" enctype="multipart/form-data">
+
+                <div class="mb-3">
+                    <label asp-for="Name" class="form-label"> </label>
+                    <textarea asp-for="Name" class="form-control">  </textarea>
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Surname" class="form-label"> </label>
+                    <textarea asp-for="Surname" class="form-control">  </textarea>
+                    <span asp-validation-for="Surname" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Email" class="form-label"> </label>
+                    <textarea asp-for="Email" class="form-control">  </textarea>
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Username" class="form-label"> </label>
+                    <textarea asp-for="Username" class="form-control">  </textarea>
+                    <span asp-validation-for="Username" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Password" class="form-label"> </label>
+                    <textarea asp-for="Password" class="form-control">  </textarea>
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="ConfirmPassword" class="form-label"> </label>
+                    <textarea asp-for="ConfirmPassword" class="form-control">  </textarea>
+                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                </div>
+
+
+
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1">Select Category</label>
+                    <select class="form-control" name="role">
+
+                        @foreach (string role in ViewBag.Roles)
+                        {
+                            <option value="@role">@role</option>
+
+                        }
+
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <a asp-action="Index" class="btn btn-success"> Go Back</a>
+
+            </form>
+
+
+
+
+
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}
+
+
+
